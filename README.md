@@ -1,2 +1,3 @@
-# js-examples
-JavaScript Examples
+# JavaScript Examples
+
+Examples to learn JavaScript language.
