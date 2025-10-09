@@ -1,12 +1,19 @@
 /**
  * Arrow functions, where to use
  * 
+ * Provides compact syntax to write functions.
+ * They are best to write quick one liner functions.
+ * 
  * Array Methods (map, filter, reduce)
  * Conciseness and clean syntax make them ideal for quick, simple callbacks.
  * 
  * Callbacks
  * Guarantees that "this" retains the context of the surrounding scope (parent scope),
  * avoiding the common need for binding (.bind(this)) or storing "this" in a local variable (that = this).
+ * 
+ * Best suited to write
+ * - quick one liner functions
+ * - callbacks
  */
 
 // #1

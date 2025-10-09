@@ -1,7 +1,7 @@
 // console.log(`Order total = ${orderTotal}`);
 // Uncaught ReferenceError: Cannot access 'orderTotal' before initialization
 
-// Lines 1 -> 3 are temporal dead zone for orderTotal.
+// Lines 1 -> 5 are temporal dead zone for orderTotal.
 // orderTotal is hoisted and allocated memory but you can't use it until it is initialized.
 let orderTotal = 0;
 

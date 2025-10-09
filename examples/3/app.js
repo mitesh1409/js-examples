@@ -23,7 +23,7 @@ const shoppingCart = {
     paymentMethod: 'COD', // Card, UPI, Netbanking
 };
 
-// Later in the application flow we can change this shoppingCart object - items removed/added,
+// Later in the application flow we can change/edit this shoppingCart object - items removed/added,
 // discount changed, payment method changed.
 // But we are not allowed to re-assign a new object to the shoppingCart.
 
