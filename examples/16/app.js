@@ -1,0 +1,33 @@
+// Given a string, find out count of each character.
+
+// Solution #1: Using Array and forEach
+// const krishnaJap = 'hare krishna hare krishna krishna krishna hare hare';
+
+// const characters = [];
+
+// [...krishnaJap].forEach((character) => {
+//     if (!characters[character]) {
+//         characters[character] = 1;
+//         return;
+//     }
+//     characters[character]++;
+// });
+
+// // Characters with their count.
+// console.log(characters);
+
+// Solution #2: Using Object and for...of
+const krishnaJap = 'hare krishna hare krishna krishna krishna hare hare';
+
+const characters = {};
+
+for (let character of krishnaJap) {
+    if (!characters[character]) {
+        characters[character] = 1;
+        continue;
+    }
+    characters[character]++;
+}
+
+// Characters with their count.
+console.log(characters);
