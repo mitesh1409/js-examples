@@ -16,3 +16,9 @@ console.log(`Order total = ${orderTotal}`);
 // Re-declaration is not allowed.
 // let orderTotal = 10;
 // Uncaught SyntaxError: Identifier 'orderTotal' has already been declared (at app.js:16:5)
+
+// console.log('X', X);
+// Uncaught ReferenceError: Cannot access 'X' before initialization
+let X;
+console.log('X', X);
+// X undefined

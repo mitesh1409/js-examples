@@ -1,12 +1,9 @@
 /**
  * Example #1
- * Promise can be either resolved/fulfilled or rejected.
- * 
- * A Promise represents a value that is unknown now,
- * that may become known in future.
- * 
- * A Promise manages a single async value
- * that can be handled in the future.
+ * Uber ride request - a simple promise.
+ * A promise with an executor function, it resolves/rejects the promise.
+ * executor function - Synchronous  - Promise resolved/rejected immediately
+ * executor function - Asynchronous - Promise pending
  * 
  * Lets take an example of requesting an Uber ride.
  * 
@@ -32,21 +29,17 @@
  * Either way the original request is now finally settled.
  * 
  * Promise is in settled state.
- * 
- * Example #2
- * Promise callbacks are pushed to Microtask/Priority Queue.
- * It gets priority over Macrotask/Task Queue.
- * 
- * Example #3
- * Promises parallel execution.
- * 
- * Example #4
- * Promises sequence execution.
- * 
- * Example #5
- * Promises race execution.
  */
 
+/**
+ * Promise can be either resolved/fulfilled or rejected.
+ * 
+ * A Promise represents a value that is unknown now,
+ * that may become known in future.
+ * 
+ * A Promise manages a single async value
+ * that can be handled in the future.
+ */
 
 /**
  * Producer
@@ -54,7 +47,9 @@
  * It is developer's job to define a callback function called an executor function
  * which is passed to Promise constructor.
  * This executor function defines whether to resolve or reject the promise,
- * it will contain asynchronous code.
+ * it will contain synchronous/asynchronous code.
+ * The executor is called synchronously (as soon as the Promise is constructed) 
+ * with the resolveFunc and rejectFunc functions as arguments.
  * 
  * Consumer
  * Consumer of the Promise can call its .then/.catch/.finally method.
@@ -64,10 +59,43 @@
  * .finally = function that handles settled promise, it allows to do cleanup at the end.
  */
 
-// Example #1
+/** 
+ * Example #2
+ * Promise callbacks are pushed to Microtask/Priority Queue.
+ * It gets priority over Macrotask/Task Queue.
+ * 
+ * Example
+ * What if we resolve/reject multiple times?
+ * 
+ * Example #3
+ * Promises parallel execution.
+ * 
+ * Example #4
+ * Promises sequence execution.
+ * 
+ * Example #5
+ * Promises race execution.
+ * 
+ * Example #6
+ * async/await - syntactic sugar, uses Promise under the hood.
+ * async/await - calling async function with & without await.
+ */
+
+console.log('Started...');
 
 // Producer
-const ride = new Promise((resolve, reject) => {
+const rideRequest = new Promise((resolve, reject) => {
+    console.log('Promise executor started...');
+
+    // Typically asynchronous code goes here.
+    // Create a ride request.
+    // Notify nearby drivers about this ride request.
+    // Check if any driver accepted this ride request.
+    // Check if either driver or customer has rejected the ride request.
+    // and so on...
+
+    // Dummy Synchronous code
+    // Promise will be resolved/rejected immediately since executor function is Synchronous.
     const driverArrived = false;
 
     if (driverArrived) {
@@ -79,10 +107,30 @@ const ride = new Promise((resolve, reject) => {
         // Generally we will pass an Error object, which contains reasons for failure.
         reject(new Error('Driver bailed :( Please book another ride!'));
     }
+
+    // // Dummy Asynchronous code
+    // // Promise will be pending since executor function is Asynchronous.
+    // fetch('https://jsonplaceholder.typicode.com/users')
+    //     .then(response => response.json())
+    //     .then(jsonResponse => {
+    //         console.log('JSON Response', jsonResponse);
+    //         resolve('Driver arrived. Ride details. Share OTP: 0987. Happy journey! :)');
+    //         // reject(new Error('Driver bailed :( Please book another ride!'));
+    //     });
+
+    // // Dummy Asynchronous code
+    // setTimeout(() => {
+    //     resolve('Driver arrived. Ride details. Share OTP: 0987. Happy journey! :)');
+    //     // reject(new Error('Driver bailed :( Please book another ride!'));
+    // }, 100);
+
+    console.log('Promise executor ended...');
 });
 
+console.log('rideRequest', rideRequest);
+
 // Consumer
-ride
+rideRequest
     .then((result) => {
         console.log('then #1 - result', result);
         return 'OTP: 0987';
@@ -97,6 +145,7 @@ ride
         console.log('Your Uber ride finally got settled. Please share your feedback and ratings.');
     });
 
+console.log('Ended...');
 
 // // Example #2
 
